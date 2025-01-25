@@ -6,4 +6,4 @@
 
 **3. I will test your code when compleat.**
 
-**4. Use pip install -r requerements.txt, or install the requered module indivijually.**
+**4. Use pip install -r requerements.txt, or install the requered modules indivijually.**
