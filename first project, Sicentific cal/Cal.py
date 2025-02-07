@@ -56,7 +56,8 @@ def tan(a):
 # Star like this
 if __name__ == "__main__":
     print("Enter two numbers: ")
-    a = int(input())
-    b = int(input())
+    a = int(input("num_1"))
+    b = int(input("num_2"))
     print("Enter the operation you want to perform: ")
+    oparation = input()
     ...
