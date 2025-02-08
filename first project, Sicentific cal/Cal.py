@@ -1,4 +1,7 @@
 import math
+from symbol import return_stmt
+
+
 # If you know how to use a Class
 class Cal:
     def __init__(self, a, b):
@@ -83,11 +86,54 @@ def class_metord(oparator, num_1, num_2):
     else:
         print("Invalid oparation try again!!")
 
-# Star like this
+
+def non_class_metord(oparater, num_1, num_2):
+    o = oparater
+    num_1 = num_1
+    num_2 = num_2
+    if o == "+":
+        print(add(num_1, num_2))
+    elif o == "-":
+        print(sub(num_1, num_2))
+    elif o == "/":
+        print(div(num_1, num_2))
+    elif o == "*":
+        print(mul(num_1, num_2))
+    elif o == "**":
+        print(power(num_1, num_2))
+    elif o == "%":
+        print(mod(num_1, num_2))
+    elif o == "squer root":
+        print(root(num_1))
+    elif o == "sin":
+        print(sin(num_1))
+    elif o == "cos":
+        print(cos(num_1))
+    elif o == "tan":
+        print(tan(num_1))
+    elif o == "log":
+        print(log(num_1))
+    else:
+        print("Invalid oparation try again!!")
+
+
 if __name__ == "__main__":
-    print("Enter two numbers (for cos, sin, tan, log enter only one, sencond one no counted): ")
-    x = int(input("num_1"))
-    y = int(input("num_2"))
-    print("Enter the operation you want to perform(+, -, /, *, %, **, squer root, cos, sin, tan, log): ")
-    oparation = input()
-    ...
+    while True:
+        print("Enter the operation you want to perform(+, -, /, *, %, **, squer root, cos, sin, tan, log) exit() to exit: ")
+        oparation = input()
+        if oparation == "exit()":
+            print("Hope to see you again. Bye for now!")
+            break
+        else:
+            pass
+        print("Enter two numbers (for cos, sin, tan, log enter only one, sencond one no counted): ")
+        x = input("num_1: ")
+        y = input("num_2: ")
+        if x.isdigit() and y.isdigit():
+            x, y = int(x), int(y)
+        else:
+            print("Numbers must be numbers")
+            continue
+        # remove the hash tag and space of motord needed
+        class_metord(oparation, x, y)
+        # non_class_metord(oparation, x, y)
