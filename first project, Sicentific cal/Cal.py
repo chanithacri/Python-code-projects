@@ -1,6 +1,6 @@
 import math
 # If you know how to use a Class
-class cal:
+class Cal:
     def __init__(self, a, b):
         self.num1 = a
         self.num2 = b
