@@ -55,9 +55,16 @@ def tan(a):
 # User input and function calling(You have to compleate this part)
 # Star like this
 if __name__ == "__main__":
-    print("Enter two numbers (for cos, sin, tan, log enter only one, sencond one no counted): ")
-    x = int(input("num_1"))
-    y = int(input("num_2"))
-    print("Enter the operation you want to perform(+, -, /, *, %, **, squer root, cos, sin, tan, log): ")
-    oparation = input()
-    ...
+    while True:
+        print("Enter the operation you want to perform(+, -, /, *, %, **, squer root, cos, sin, tan, log) exit() to exit: ")
+        oparation = input()
+        if oparation == "exit()":
+            print("Hope to see you again. Bye for now!")
+            break
+        else:
+            pass
+        print("Enter two numbers (for cos, sin, tan, log enter only one, sencond one no counted): ")
+        # must add metord to check thet number inputs are valid numbers.
+        x = int(input("num_1"))
+        y = int(input("num_2"))
+        ...
