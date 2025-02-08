@@ -1,7 +1,4 @@
 import math
-from symbol import return_stmt
-
-
 # If you know how to use a Class
 class Cal:
     def __init__(self, a, b):
