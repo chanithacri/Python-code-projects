@@ -25,7 +25,7 @@ class FileHandler:
 
     def make_file(self):
         if self.new_file_permition:
-            self.file_name = input('Name the file(with file extention(.txt)> \n')
+            self.file_name = input('Name the file(with file extention(eg:- .py .txt)> \n')
             if os.path.exists(self.file_name):
                 answer = input('Do you want to rewrite or add>')
                 if 'rewrite' in answer:
@@ -47,15 +47,27 @@ class FileHandler:
             pass
 
 if __name__ == "__main__":
-    try:
-        file_hander = FileHandler()
-        print('Welcome to file handler.')
-        a = input('What do you wan\'t to do?(make folder, write file, read file)>')
-        if a == 'make folder' or 'Make folder':
-            file_hander.get_forder_name()
-            if file_hander.new_file_permition:
-                file_hander.make_file()
+    while True:
+        try:
+            file_hander = FileHandler()
+            print('Welcome to file handler.')
+            a = input('What do you wan\'t to do?(make folder, write file, read file) eixt() to exit> ')
+            if a == 'exit()':
+                print("Bye, have a nice day")
+                break
             else:
-                pass
-    except OSError:
-        print(OSError.text())
+                if 'make folder' in a or 'Make folder' in a:
+                    file_hander.get_forder_name()
+                    if file_hander.new_file_permition:
+                        file_hander.make_file()
+                        continue
+                    else:
+                        pass
+                elif 'write file' in a or 'Write file' in a:
+                    file_hander.new_file_permition = True
+                    print(os.listdir())
+                    file_hander.make_file()
+                    continue
+        except OSError:
+            print("Somting happend")
+            print(str(OSError))
