@@ -1,12 +1,13 @@
 import os
 
+
 class FileHandler:
     def __init__(self):
         self.folder_name = ''
         self.file_name = ''
         self.content = ''
         self.new_file_permition = False
-
+    # Make folder
     def get_forder_name(self):
         self.folder_name = input('Name the folder>')
         while os.path.exists(self.folder_name) and os.path.isdir(self.folder_name):
@@ -23,6 +24,7 @@ class FileHandler:
         if not os.path.exists(self.folder_name) and os.path.isdir(self.folder_name):
             os.mkdir(self.folder_name)
 
+    # Make file functionality
     def make_file(self):
         if self.new_file_permition:
             self.file_name = input('Name the file(with file extention(eg:- .py .txt)> \n')
@@ -45,29 +47,40 @@ class FileHandler:
                     print(f'Content writen to {self.file_name}')
         else:
             pass
+    # Read file functionality
+    def read_file(self):
+        path = os.path
+        path = path.split('/')
+        print(os.listdir(path[-1]))
 
 if __name__ == "__main__":
     while True:
         try:
             file_hander = FileHandler()
             print('Welcome to file handler.')
-            a = input('What do you wan\'t to do?(make folder, write file, read file) eixt() to exit> ')
+            print(f'Current directory {os.path}')
+            a = input('What do you wan\'t to do?(make folder-Mf, write file-Wf, read file-Rf, change directory-Cd) eixt() to exit> ')
             if a == 'exit()':
                 print("Bye, have a nice day")
                 break
             else:
-                if 'make folder' in a or 'Make folder' in a:
+                if a in ['Make folder', 'make folder', 'Mf', 'mf']:
                     file_hander.get_forder_name()
                     if file_hander.new_file_permition:
                         file_hander.make_file()
                         continue
                     else:
                         pass
-                elif 'write file' in a or 'Write file' in a:
+                elif a in ['write file', 'Write file', 'Wr', 'wr']:
                     file_hander.new_file_permition = True
                     print(os.listdir())
                     file_hander.make_file()
                     continue
+                elif a in ['Read file', 'read file', 'rf', 'Rf']:
+                    file_hander.read_file()
+                    continue
+                else:
+                    print("Command error")
         except OSError:
             print("Somting happend")
             print(str(OSError))
