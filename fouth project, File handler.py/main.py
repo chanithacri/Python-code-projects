@@ -41,25 +41,33 @@ class FileHandler:
 
                 print(f'Content writen to {self.file_name}')
             else:
-                content = input('What do you want to write file>')
+                content = input('What do you want to write file>\n')
                 with open(self.file_name, 'w') as f:
                     f.write(content)
-                    print(f'Content writen to {self.file_name}')
+                    print(f'Content writen to \n{self.file_name}')
         else:
             pass
     # Read file functionality
     def read_file(self):
-        path = os.path
-        path = path.split('/')
-        print(os.listdir(path[-1]))
+        files = os.listdir()
+        print(files)
+        uer_input = input('Which one do you wan\'t to read>\n')
+        if uer_input in files:
+            content = []
+            with open(uer_input, 'r') as f:
+                content = f.readlines()
+            for i in content:
+                print(i, end='')
+            print()
 
 if __name__ == "__main__":
+    file_hander = FileHandler()
+    print('Welcome to file handler.')
+    current_folder = os.path.dirname(__file__).split("/")
+    print(f'Current directory \n{current_folder[-2]}')
     while True:
         try:
-            file_hander = FileHandler()
-            print('Welcome to file handler.')
-            print(f'Current directory {os.path}')
-            a = input('What do you wan\'t to do?(make folder-Mf, write file-Wf, read file-Rf, change directory-Cd) eixt() to exit> ')
+            a = input('What do you wan\'t to do?(make folder-Mf, write file-Wf, read file-Rf, change directory-Cd) eixt() to exit> \n')
             if a == 'exit()':
                 print("Bye, have a nice day")
                 break
