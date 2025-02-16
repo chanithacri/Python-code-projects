@@ -64,8 +64,8 @@ class FileHandler:
         files_or_forder = os.listdir()
         directories = [i for i in files_or_forder if os.path.isdir(i)]
         print(directories)
-        new_dir = input('Which directory do you want to enter> \n')
-        if new_dir in directories:
+        new_dir = input('Which directory do you want to enter \n or \'..\' to go back a directory> \n')
+        if new_dir in directories or new_dir == '..':
             os.chdir(new_dir)
             f_n = os.listdir()
             print(f_n)
@@ -74,7 +74,7 @@ class FileHandler:
 if __name__ == "__main__":
     file_hander = FileHandler()
     print('Welcome to file handler.')
-    current_folder = os.path.dirname(__file__).split("/")
+    current_folder = os.getcwd().split("/")
     print(f'Current directory \n{current_folder[-2]}')
     while True:
         try:

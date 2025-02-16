@@ -1,3 +1,6 @@
 import os
-path = os.path.dirname(__file__)
+path = os.getcwd()
 print(path)
+os.chdir('..')
+path_2 = os.getcwd()
+print(path_2)
