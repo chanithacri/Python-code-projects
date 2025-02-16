@@ -60,6 +60,17 @@ class FileHandler:
                 print(i, end='')
             print()
 
+    def change_directory(self):
+        files_or_forder = os.listdir()
+        directories = [i for i in files_or_forder if os.path.isdir(i)]
+        print(directories)
+        new_dir = input('Which directory do you want to enter> \n')
+        if new_dir in directories:
+            os.chdir(new_dir)
+            f_n = os.listdir()
+            print(f_n)
+
+
 if __name__ == "__main__":
     file_hander = FileHandler()
     print('Welcome to file handler.')
@@ -67,7 +78,8 @@ if __name__ == "__main__":
     print(f'Current directory \n{current_folder[-2]}')
     while True:
         try:
-            a = input('What do you wan\'t to do?(make folder-Mf, write file-Wf, read file-Rf, change directory-Cd) eixt() to exit> \n')
+            print('You can carry out folowing commands: \nMake folder-Mf \nWrite file-Wf \nRead file-Rf\nChange directory-Cd ')
+            a = input('Enter command or eixt() to exit> \n')
             if a == 'exit()':
                 print("Bye, have a nice day")
                 break
@@ -87,6 +99,8 @@ if __name__ == "__main__":
                 elif a in ['Read file', 'read file', 'rf', 'Rf']:
                     file_hander.read_file()
                     continue
+                elif a in ['Change directory', 'change directory', 'Cd', 'cd']:
+                    file_hander.change_directory()
                 else:
                     print("Command error")
         except OSError:
