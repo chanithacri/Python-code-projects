@@ -120,7 +120,7 @@ if __name__ == "__main__":
                 elif a in ['Change directory', 'change directory', 'Cd', 'cd']:
                     file_hander.change_directory()
                 elif a in ['delete', 'Delete', 'Dl', 'dl']:
-                    ...
+                    file_hander.delete_forlder_file()
                 else:
                     print("Command error")
         except OSError:
