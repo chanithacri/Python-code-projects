@@ -1,5 +1,5 @@
 import os
-
+import shutil
 
 class FileHandler:
     def __init__(self):
@@ -21,8 +21,7 @@ class FileHandler:
             else:
                 self.file_name = input('New folder name> \n')
                 continue
-        if not os.path.exists(self.folder_name) and os.path.isdir(self.folder_name):
-            os.mkdir(self.folder_name)
+        os.mkdir(self.folder_name)
 
     # Make file functionality
     def make_file(self):
@@ -70,6 +69,25 @@ class FileHandler:
             f_n = os.listdir()
             print(f_n)
 
+    def delete_forlder_file(self):
+         fils_folders = os.listdir()
+         print(fils_folders)
+         del_foler_file = input('What do you wan\'t to delete>\n')
+         if del_foler_file not in fils_folders:
+             print('File not found')
+         else:
+            del_per = input('Are you suer you want to delete the file or folder(yes, no): THIS CAN\'T BE UNDONE!!>\n')
+            massage = ''
+            if del_per == 'yes':
+                if os.path.isdir(del_foler_file):
+                    massage = f'\'{del_foler_file}\' and all its content was deleted'
+                else:
+                    massage = f'\'{del_foler_file}\' was deleted'
+                shutil.rmtree(del_foler_file)
+                print(massage)
+            else:
+                print('Folder not Deleted')
+
 
 if __name__ == "__main__":
     file_hander = FileHandler()
@@ -78,7 +96,7 @@ if __name__ == "__main__":
     print(f'Current directory \n{current_folder[-2]}')
     while True:
         try:
-            print('You can carry out folowing commands: \nMake folder-Mf \nWrite file-Wf \nRead file-Rf\nChange directory-Cd ')
+            print('You can carry out folowing commands: \nMake folder-Mf \nWrite file-Wf \nRead file-Rf\nChange directory-Cd\nDelete-Dl')
             a = input('Enter command or eixt() to exit> \n')
             if a == 'exit()':
                 print("Bye, have a nice day")
@@ -101,6 +119,8 @@ if __name__ == "__main__":
                     continue
                 elif a in ['Change directory', 'change directory', 'Cd', 'cd']:
                     file_hander.change_directory()
+                elif a in ['delete', 'Delete', 'Dl', 'dl']:
+                    ...
                 else:
                     print("Command error")
         except OSError:
