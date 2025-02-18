@@ -8,6 +8,7 @@ class FileHandler:
         self.content = ''
         self.new_file_permition = False
         self.content_r = []
+        self.folder_path = os.getcwd()
     # Make folder
     def get_forder_name(self):
         self.folder_name = input('Name the folder>')
@@ -47,7 +48,7 @@ class FileHandler:
                     print(f'Content writen to \n{self.file_name}')
         else:
             pass
-    
+
     # Read file functionality
     def read_file(self):
         files = os.listdir()
@@ -62,8 +63,10 @@ class FileHandler:
 
     #Change directory
     def change_directory(self):
+        path = self.folder_path
         files_or_forder = os.listdir()
         directories = [i for i in files_or_forder if os.path.isdir(i)]
+        print(path)
         print(directories)
         new_dir = input('Which directory do you want to enter \n or \'..\' to go back a directory> \n')
         if new_dir in directories or new_dir == '..':
@@ -73,6 +76,9 @@ class FileHandler:
 
     def delete_forlder_file(self):
          fils_folders = os.listdir()
+         path = self.folder_path
+         path = os.getcwd()
+         print(f'Current directory:\n{path}')
          print(fils_folders)
          del_foler_file = input('What do you wan\'t to delete>\n')
          if del_foler_file not in fils_folders:
