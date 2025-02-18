@@ -7,6 +7,7 @@ class FileHandler:
         self.file_name = ''
         self.content = ''
         self.new_file_permition = False
+        self.content_r = []
     # Make folder
     def get_forder_name(self):
         self.folder_name = input('Name the folder>')
@@ -46,19 +47,20 @@ class FileHandler:
                     print(f'Content writen to \n{self.file_name}')
         else:
             pass
+    
     # Read file functionality
     def read_file(self):
         files = os.listdir()
         print(files)
         uer_input = input('Which one do you wan\'t to read>\n')
         if uer_input in files:
-            content = []
             with open(uer_input, 'r') as f:
-                content = f.readlines()
-            for i in content:
+                self.content_r = f.readlines()
+            for i in self.content_r:
                 print(i, end='')
             print()
 
+    #Change directory
     def change_directory(self):
         files_or_forder = os.listdir()
         directories = [i for i in files_or_forder if os.path.isdir(i)]
