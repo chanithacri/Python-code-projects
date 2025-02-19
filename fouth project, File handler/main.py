@@ -96,6 +96,7 @@ class FileHandler:
                 print(massage)
             else:
                 print('Folder not Deleted')
+    #  Add copy and past functionality
 
 
 if __name__ == "__main__":
