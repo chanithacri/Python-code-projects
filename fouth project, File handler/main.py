@@ -89,9 +89,10 @@ class FileHandler:
             if del_per == 'yes':
                 if os.path.isdir(del_foler_file):
                     massage = f'\'{del_foler_file}\' and all its content was deleted'
+                    shutil.rmtree(del_foler_file)
                 else:
+                    os.remove(del_foler_file)
                     massage = f'\'{del_foler_file}\' was deleted'
-                shutil.rmtree(del_foler_file)
                 print(massage)
             else:
                 print('Folder not Deleted')
@@ -117,7 +118,7 @@ if __name__ == "__main__":
                         continue
                     else:
                         pass
-                elif a in ['write file', 'Write file', 'Wr', 'wr']:
+                elif a in ['write file', 'Write file', 'Wf', 'wf']:
                     file_hander.new_file_permition = True
                     print(os.listdir())
                     file_hander.make_file()
