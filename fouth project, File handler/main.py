@@ -1,6 +1,7 @@
 import os
 import shutil
 
+
 class FileHandler:
     def __init__(self):
         self.folder_name = ''
@@ -9,6 +10,8 @@ class FileHandler:
         self.new_file_permition = False
         self.content_r = []
         self.folder_path = os.getcwd()
+        self.derectories = [i for i in os.listdir() if os.path.isdir(i)]
+        self.files = [i for i in os.listdir() if not os.path.isdir(i)]
     # Make folder
     def get_forder_name(self):
         self.folder_name = input('Name the folder>')
@@ -73,6 +76,9 @@ class FileHandler:
             os.chdir(new_dir)
             f_n = os.listdir()
             print(f_n)
+            self.folder_path = os.getcwd()
+        else:
+            print('Folder does not exist.')
 
     def delete_forlder_file(self):
          fils_folders = os.listdir()
@@ -96,17 +102,39 @@ class FileHandler:
                 print(massage)
             else:
                 print('Folder not Deleted')
-    #  Add copy and past functionality
+
+    def move(self):
+        while True:
+            print("\nAvailable files and folders:")
+            print(os.listdir(self.folder_path))  # Show contents of the directory
+
+            file_folder = input("Which file/folder do you want to move?>\n ")
+            source = os.path.join(self.folder_path, file_folder)  # Correct path
+
+            if not os.path.exists(source):  # Corrected check
+                print("Error: The specified file or folder does not exist. Try again.")
+                continue
+
+            destination_folder = input("Where do you want to move it to?>\n ")
+            destination = os.path.join(self.folder_path, destination_folder)
+
+            try:
+                shutil.move(source, destination)
+                print(f"{file_folder} moved successfully to {destination}")
+                break  # Exit loop on success
+            except shutil.Error as e:
+                print(f"Error: {e}. Try again.")
+                continue
 
 
 if __name__ == "__main__":
     file_hander = FileHandler()
     print('Welcome to file handler.')
     current_folder = os.getcwd().split("/")
-    print(f'Current directory \n{current_folder[-2]}')
+    print(f'Current directory \n{current_folder[-1]}')
     while True:
         try:
-            print('You can carry out folowing commands: \nMake folder-Mf \nWrite file-Wf \nRead file-Rf\nChange directory-Cd\nDelete-Dl')
+            print('You can carry out folowing commands: \nMake folder-Mf \nWrite file-Wf \nRead file-Rf\nChange directory-Cd\nDelete-Dl\nMove-Cp')
             a = input('Enter command or eixt() to exit> \n')
             if a == 'exit()':
                 print("Bye, have a nice day")
@@ -131,6 +159,8 @@ if __name__ == "__main__":
                     file_hander.change_directory()
                 elif a in ['delete', 'Delete', 'Dl', 'dl']:
                     file_hander.delete_forlder_file()
+                elif a in ['Move', 'move', 'Cp', 'cp']:
+                    file_hander.move()
                 else:
                     print("Command error")
         except OSError:
