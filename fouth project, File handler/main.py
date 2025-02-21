@@ -135,7 +135,7 @@ if __name__ == "__main__":
     while True:
         try:
             print('You can carry out folowing commands: \nMake folder-Mf \nWrite file-Wf \nRead file-Rf\nChange directory-Cd\nDelete-Dl\nMove-Cp')
-            a = input('Enter command or eixt() to exit> \n')
+            a = input('Enter command or eixt() to exit> \n').lower()
             if a == 'exit()':
                 print("Bye, have a nice day")
                 break
@@ -147,19 +147,19 @@ if __name__ == "__main__":
                         continue
                     else:
                         pass
-                elif a in ['write file', 'Write file', 'Wf', 'wf']:
+                elif a in ['write file', 'wf']:
                     file_hander.new_file_permition = True
                     print(os.listdir())
                     file_hander.make_file()
                     continue
-                elif a in ['Read file', 'read file', 'rf', 'Rf']:
+                elif a in ['read file', 'rf']:
                     file_hander.read_file()
                     continue
-                elif a in ['Change directory', 'change directory', 'Cd', 'cd']:
+                elif a in ['change directory', 'cd']:
                     file_hander.change_directory()
-                elif a in ['delete', 'Delete', 'Dl', 'dl']:
+                elif a in ['delete', 'dl']:
                     file_hander.delete_forlder_file()
-                elif a in ['Move', 'move', 'Cp', 'cp']:
+                elif a in ['move', 'cp']:
                     file_hander.move()
                 else:
                     print("Command error")
