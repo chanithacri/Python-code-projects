@@ -1,3 +1,19 @@
-# Pasoord should be minmum 8 characters long and should contain at least one uppercase letter, one lowercase letter, one digit and one special character.
-# Ask user for number of characters in password and generate password accordingly(min 8 characters long).
-# Password should be random.
+import string, os, random
+
+
+def random_pass():
+    while True:
+        lenght = input('How long(min-8)')
+        if lenght.isdigit():
+            lenght = int(lenght)
+            break
+        else:
+            print('enter digit:')
+            continue
+    random.seed = (os.urandom(1024))
+    chars = string.ascii_letters + string.digits + '!@#$%^&*'
+    password = ''.join(random.choice(chars) for i in range(lenght + 1))
+    print(password)
+
+
+random_pass()
