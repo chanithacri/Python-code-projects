@@ -7,3 +7,5 @@
 **3. I will test your code when compleat.**
 
 **4. Use pip install -r requerements.txt, or install the requered modules indivijually.**
+
+**5. Make new branch and use the branch with your name in to push code into.Please**
