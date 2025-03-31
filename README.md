@@ -9,3 +9,6 @@
 **4. Use pip install -r requerements.txt, or install the requered modules indivijually.**
 
 **5. Make new branch and use the branch with your name in to push code into.Please**
+
+
+**All anwers are avalble here : https://github.com/code-help-on-python/Python-code-colab-2**
